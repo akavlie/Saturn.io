@@ -1,4 +1,4 @@
 test:
-	mocha
+	mocha -u tdd
 
 .PHONY: test
