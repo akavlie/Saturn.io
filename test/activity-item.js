@@ -1,10 +1,13 @@
-var assert = require('assert');
+var assert = require('assert')
+  , analyze_me = require('../models/ActivityItem').analyze_me
+  , mongoose = require('mongoose');
 
 suite('Natural Language', function() {
   setup(function() {
+    mongoose.connect('mongodb://localhost/testdb');
   });
 
-  suite('something', function() {
+  suite('natural', function() {
   });
 });
 

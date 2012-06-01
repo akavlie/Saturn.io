@@ -499,4 +499,5 @@ if (!String.prototype.replace_punctuation) {
 mongoose.model('ActivityItem', ActivityItemSchema);
 
 exports.ActivityItem = ActivityItemSchema;
+exports.analyze_me = analyze_me;
 
