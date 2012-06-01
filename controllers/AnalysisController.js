@@ -68,29 +68,3 @@ exports.controller = function (req, res) {
 	// end /analysis/analyze
 	
 }
-
-if (!String.prototype.remove_urls) {
-	String.prototype.remove_urls = function () {
-		var url_pattern = /\(?\bhttps?:\/\/[-A-Za-z0-9+&@#\/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#\/%=~_()|]/gi;
-		return this.replace(url_pattern, "");
-	}
-}
-if (!String.prototype.remove_hashtags) {
-	String.prototype.remove_hashtags = function () {
-		var hash_pattern = /(^|\s)#[-A-Za-z0-9_]+(\s|$)/gi;
-		return this.replace(hash_pattern, "$1$2");
-	}
-}
-if (!String.prototype.remove_screen_names) {
-	String.prototype.remove_screen_names = function () {
-		var at_pattern = /(^|\s)@[-A-Za-z0-9_]+(\s|$)/gi;
-		return this.replace(at_pattern, "$1$2");
-	}
-}
-if (!String.prototype.replace_punctuation) {
-	String.prototype.replace_punctuation = function () {
-		var alpha_pattern = /[^a-z^A-Z^0-9^-^_]/gi;
-		return this.replace(alpha_pattern, " ");
-	}
-}
-
