@@ -47,13 +47,17 @@ exports.controller = function (req, res) {
 				var item = items.shift();
 				console.log("Analyzing item: " + item.message);
 				//item.ratings = ratings;
+				console.log(item);
 				item.analyzed_at = new Date();
 				item.save(function (err) {
+					console.log('Item saved!');
+					console.log(err);
 					item.analyze(function (err, _item) {
-						//console.log("Done analyzing "+_item.topics.length);
+						console.log(err);
+						console.log("Done analyzing " + _item.topics.length);
 						//item.commit("ratings");
 						_item.save(function (err) {
-							// err?
+							console.log(err);
 						});
 						analyze_next();
 					});
