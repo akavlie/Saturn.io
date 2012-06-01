@@ -29,24 +29,23 @@ exports.controller = function (req, res) {
 	
 	// run via cron, please
 	self.analyze = function () {
-		
 		ActivityItem.find({analyzed_at: {"$lt": (new Date(Date.now()-86300*1000))}, created_at: {"$gt": (new Date(Date.now()-86400*1000))}})
 		.sort('posted_at', -1)
 		.limit(30)
 		.run(function (err, items) {
 			if (err || !items) {
-				console.log("No items found "+err);
+				console.log("No items found " + err);
 				res.send("Done");
 				return;
 			}
 			
 			analyze_next();
 			function analyze_next() {
-				if (items.length == 0) {
-					return finished();;
+				if (items.length === 0) {
+					return finished();
 				}
 				var item = items.shift();
-				console.log("Analyzing item: "+item.message);
+				console.log("Analyzing item: " + item.message);
 				//item.ratings = ratings;
 				item.analyzed_at = new Date();
 				item.save(function (err) {
@@ -64,7 +63,5 @@ exports.controller = function (req, res) {
 				res.send("Done");
 			}
 		});
-	}
-	// end /analysis/analyze
-	
-}
+	};
+};
